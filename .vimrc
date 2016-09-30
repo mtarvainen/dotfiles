@@ -408,5 +408,5 @@ endfunction
 autocmd VimEnter * WatchForChangesAllFile! 
 
 " Cycling through tabs
-nnoremap <silent> <Tab> :tabnext<CR>
-nnoremap <silent> <S-Tab> :tabprevious<CR>
+nnoremap H gT
+nnoremap L gt
