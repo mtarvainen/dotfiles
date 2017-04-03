@@ -154,6 +154,9 @@ Plugin 'Syntastic'
 Plugin 'scrooloose/nerdTree'
 map <C-n> :NERDTreeToggle<CR>
 
+
+Plugin 'chase/vim-ansible-yaml'
+
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -187,8 +190,6 @@ endif
 call vundle#end() 
 " Setting up Vundle - the vim plugin bundler end
 
-colorscheme vibrantink
-
 " Column 80 marker
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#660000
 match OverLength /\%81v.\+/
@@ -219,6 +220,7 @@ filetype indent plugin on
  
 " Enable syntax highlighting
 syntax on
+"au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
 
 " Centralize backups, swapfiles and undo history
 silent !mkdir -p ~/.vim/{backups,swaps,undo}
@@ -410,3 +412,8 @@ autocmd VimEnter * WatchForChangesAllFile!
 " Cycling through tabs
 nnoremap H gT
 nnoremap L gt
+
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+
