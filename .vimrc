@@ -150,12 +150,16 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Syntax and errors highlighter
 Plugin 'Syntastic' 
+
 " File explorer
 Plugin 'scrooloose/nerdTree'
 map <C-n> :NERDTreeToggle<CR>
 
-
+" Ansible yaml linter
 Plugin 'chase/vim-ansible-yaml'
+
+" Vim solarized theme
+Plugin 'altercation/vim-colors-solarized'
 
 " Airline
 Plugin 'vim-airline/vim-airline'
@@ -176,11 +180,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
-
-" Vim color schemes
-Plugin 'flazz/vim-colorschemes'
 
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
@@ -212,7 +213,6 @@ let sh_fold_enabled=1                 " sh
 let vimsyn_folding='af'               " Vim script
 let xml_syntax_folding=1              " XML
 
-
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -221,6 +221,11 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax on
 "au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
+
+" Set up solarized
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
 " Centralize backups, swapfiles and undo history
 silent !mkdir -p ~/.vim/{backups,swaps,undo}
@@ -413,7 +418,4 @@ autocmd VimEnter * WatchForChangesAllFile!
 nnoremap H gT
 nnoremap L gt
 
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
 
