@@ -161,7 +161,7 @@ let g:conoline_use_colorscheme_default_insert=1
 " Syntax and errors highlighter
 " https://github.com/vim-syntastic/syntastic
 "
-Plugin 'Syntastic' 
+Plugin 'vim-syntastic/syntastic' 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
