@@ -148,15 +148,38 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+" Highlight the current line
+" https://github.com/miyakogi/conoline.vim
+"
+Plugin 'miyakogi/conoline.vim'
+let g:conoline_auto_enable = 1
+let g:conoline_use_colorscheme_default_normal=1
+let g:conoline_use_colorscheme_default_insert=1
+" let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd'
+" let g:conoline_color_insert_dark = 'guibg=black guifg=white'
+
 " Syntax and errors highlighter
+" https://github.com/vim-syntastic/syntastic
+"
 Plugin 'Syntastic' 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" YAML linter configuration for Syntastic
+" Requires yamllint package in path
+" 
+" https://yamllint.readthedocs.io/en/stable/quickstart.html
+"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_yaml_checkers = ['yamllint']
 
 " File explorer
 Plugin 'scrooloose/nerdTree'
 map <C-n> :NERDTreeToggle<CR>
-
-" Ansible yaml linter
-Plugin 'chase/vim-ansible-yaml'
 
 " Vim solarized theme
 Plugin 'altercation/vim-colors-solarized'
