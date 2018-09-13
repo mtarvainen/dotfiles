@@ -258,6 +258,11 @@ syntax on
 "au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
 
 " Set up solarized
+"
+" macOS: Use iTerm2 or install Solarized preset for Terminal from 
+" https://github.com/tomislav/osx-terminal.app-colors-solarized.git
+"
+" In order to use default value (16), see comment above.
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
