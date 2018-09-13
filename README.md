@@ -17,7 +17,7 @@ iTerm2 include Solarized presets out-of-box. Apply it: iTerm2 -> Preferences -> 
 [Download iTerm2 here](https://www.iterm2.com/)
 
 #### Terminal
-Use [osx-terminal.app-colors-solarized](git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git) preset.
+Use [osx-terminal.app-colors-solarized](https://github.com/tomislav/osx-terminal.app-colors-solarized.git) preset.
 
     $ git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git
 
