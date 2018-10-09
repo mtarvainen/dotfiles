@@ -4,6 +4,10 @@ case $- in
       *) return;;
 esac
 
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -33,7 +37,7 @@ alias ls='ls -GFh'
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+# Get the aliases and functions
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
