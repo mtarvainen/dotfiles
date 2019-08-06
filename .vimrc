@@ -97,6 +97,9 @@ set number
  
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
+
+" Format copy pasta nice and clean
+set paste
  
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
@@ -162,6 +165,7 @@ let g:conoline_use_colorscheme_default_insert=1
 " https://github.com/vim-syntastic/syntastic
 "
 Plugin 'vim-syntastic/syntastic' 
+" let g:syntastic_quiet_messages = { "type": "style" }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -176,6 +180,7 @@ let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_yaml_checkers = ['yamllint']
+let g:syntastic_python_checkers = ['pylint', 'mypy']
 
 " File explorer
 Plugin 'scrooloose/nerdTree'
@@ -216,7 +221,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tabs_label = ''
 " let g:airline#extensions#tabline#left_sep = '▶'
 " let g:airline#extensions#tabline#right_sep = '◀'
-
 
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
@@ -457,5 +461,3 @@ autocmd VimEnter * WatchForChangesAllFile!
 " Cycling through tabs
 nnoremap H gT
 nnoremap L gt
-
-
