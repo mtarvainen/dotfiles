@@ -180,7 +180,7 @@ let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_python_checkers = ['pylint', 'mypy']
+let g:syntastic_python_checkers = ['pylint']
 
 " File explorer
 Plugin 'scrooloose/nerdTree'
@@ -222,6 +222,20 @@ let g:airline#extensions#tabline#tabs_label = ''
 " let g:airline#extensions#tabline#left_sep = '▶'
 " let g:airline#extensions#tabline#right_sep = '◀'
 
+" Plugin 'nvie/vim-flake8'
+" autocmd BufWritePost *.py call flake8#Flake8()
+
+Plugin 'vim-scripts/indentpython.vim'
+" Python: Proper PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
     echo ""
@@ -234,13 +248,22 @@ call vundle#end()
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#660000
 match OverLength /\%81v.\+/
 
+" Flagging Unnecessary Whitespace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 " Conque Allow C-w window navigation while in insert mode
 let g:ConqueTerm_CWInsert = 1
 
 " Folding
-set foldmethod=syntax
+set foldmethod=indent
 set foldcolumn=1
-set foldlevelstart=20
+set foldlevel=99
+" set foldlevelstart=20
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
 
 let g:vim_markdown_folding_disabled=1 " Markdown
 let javaScript_fold=1                 " JavaScript
@@ -251,6 +274,7 @@ let ruby_fold=1                       " Ruby
 let sh_fold_enabled=1                 " sh
 let vimsyn_folding='af'               " Vim script
 let xml_syntax_folding=1              " XML
+let python_highlight_all=1
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -270,6 +294,10 @@ syntax on
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+
+" Cycling through tabs
+nnoremap H gT
+nnoremap L gt
 
 " Centralize backups, swapfiles and undo history
 silent !mkdir -p ~/.vim/{backups,swaps,undo}
@@ -457,7 +485,3 @@ function! WatchForChanges(bufname, ...)
 endfunction
 
 autocmd VimEnter * WatchForChangesAllFile! 
-
-" Cycling through tabs
-nnoremap H gT
-nnoremap L gt
