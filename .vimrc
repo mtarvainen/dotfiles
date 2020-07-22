@@ -181,6 +181,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_yaml_yamllint_post_args="-d '{extends: relaxed, rules: {line-length: {max: 120}}}'"
 
 " File explorer
 Plugin 'scrooloose/nerdTree'
@@ -224,17 +226,7 @@ let g:airline#extensions#tabline#tabs_label = ''
 
 " Plugin 'nvie/vim-flake8'
 " autocmd BufWritePost *.py call flake8#Flake8()
-
 Plugin 'vim-scripts/indentpython.vim'
-" Python: Proper PEP 8 indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
 
 if iCanHazVundle == 0
     echo "Installing Vundles, please ignore key map error messages"
@@ -244,9 +236,19 @@ endif
 call vundle#end() 
 " Setting up Vundle - the vim plugin bundler end
 
-" Column 80 marker
+" Python: Proper PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=120 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+" Column 120 marker
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#660000
-match OverLength /\%81v.\+/
+match OverLength /\%121v.\+/
 
 " Flagging Unnecessary Whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
